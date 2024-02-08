@@ -1,0 +1,39 @@
+<div class="bg-white shadow p-4 rounded">
+    <h1 class="display-6 text-dark text-center">Liste des commandes</h1>
+    <hr class="bg-dark text-dark">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Type de prestation</th>
+          <th scope="col">Désignation</th>
+          <th scope="col">Nombre de jours</th>
+          <th scope="col">Prix unitaire</th>
+          <th scope="col">Total HT</th>
+          <th scope="col">Total TTC</th>
+          <th scope="col">État</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let commande of commandes; let i = index">
+          <th>{{ commande.id }}</th>
+          <td>{{ commande.typePresta }}</td>
+          <td>{{ commande.designation }}</td>
+          <td>{{ commande.nbDays }}</td>
+          <td>{{ commande.unitPrice }}</td>
+          <td>{{ commande.totalExcludeTaxe }}</td>
+          <td>{{ commande.totalWithTaxe }}</td>
+          <td>{{ commande.state }}</td>
+          <td>
+            <button class="btn btn-primary me-2" type="button" [routerLink]="['/updatecommande']"
+              [queryParams]="{ index: i, id: commande.id, typePresta: commande.typePresta, designation: commande.designation, nbDays: commande.nbDays, unitPrice: commande.unitPrice, totalExcludeTaxe: commande.totalExcludeTaxe, totalWithTaxe: commande.totalWithTaxe, state: commande.state }">Modifier
+            </button>
+            <button class="btn btn-danger" type="button"
+              (click)="onDeleteCommande(commande.id, commande.typePresta, commande.designation)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

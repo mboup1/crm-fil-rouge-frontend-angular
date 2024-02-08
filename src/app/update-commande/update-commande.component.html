@@ -1,0 +1,63 @@
+<div class="row m-5">
+    <div class="col-12 col-md-10 col-lg-8 col-xl-6 mx-auto">
+        <div class="bg-white shadow rounded p-4">
+            <h1 class="display-6 text-dark text-center">Modifier infos commande - {{ commandeForm.value.typePresta }} {{
+                commandeForm.value.designation }}</h1>
+            <hr class="bg-dark mb-5" />
+            <form [formGroup]="commandeForm" (ngSubmit)="updateCommande(commandeForm.value.id, commandeForm.value)">
+                <input type="text" formControlName="id" hidden />
+
+                <div class="form-group mb-3">
+                    <label for="commandeTypePrestaInput">Type de prestation</label>
+                    <input type="text" id="commandeTypePrestaInput" class="form-control" formControlName="typePresta"
+                        [class.is-invalid]="commandeForm.get('typePresta')?.invalid && commandeForm.get('typePresta')?.touched" />
+                    <div class="invalid-feedback">
+                        Le type de prestation est requis.
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="commandeDesignationInput">Désignation</label>
+                    <input type="text" id="commandeDesignationInput" class="form-control" formControlName="designation"
+                        [class.is-invalid]="commandeForm.get('designation')?.invalid && commandeForm.get('designation')?.touched" />
+                    <div class="invalid-feedback">
+                        La désignation est requise.
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="commandeNbDaysInput">Nombre de jours</label>
+                    <input type="number" id="commandeNbDaysInput" class="form-control" formControlName="nbDays"
+                        [class.is-invalid]="commandeForm.get('nbDays')?.invalid && commandeForm.get('nbDays')?.touched" />
+                    <div class="invalid-feedback">
+                        Le nombre de jours est requis.
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="commandeUnitPriceInput">Prix unitaire</label>
+                    <input type="number" id="commandeUnitPriceInput" class="form-control" formControlName="unitPrice"
+                        [class.is-invalid]="commandeForm.get('unitPrice')?.invalid && commandeForm.get('unitPrice')?.touched" />
+                    <div class="invalid-feedback">
+                        Le prix unitaire est requis.
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="commandeStateInput">État</label>
+                    <select id="commandeStateInput" class="form-control" formControlName="state">
+                        <option value="CANCELED">Annulée</option>
+                        <option value="OPTION">En option</option>
+                        <option value="CONFIRMED">Confirmée</option>
+                    </select>
+                </div>
+
+                <div class="d-flex">
+                    <button class="btn btn-success mx-auto" type="submit" [disabled]="commandeForm.invalid">
+                        Enregistrer
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
