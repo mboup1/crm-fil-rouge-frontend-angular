@@ -49,7 +49,8 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="detailsClientModal" tabindex="-1" aria-labelledby="detailsClientModalLabel" aria-hidden="true">
+<div class="modal fade" id="detailsClientModal" tabindex="-1" aria-labelledby="detailsClientModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -72,6 +73,33 @@
           <p><strong>Ville:</strong> {{ selectedClient.city }}</p>
           <p><strong>Pays:</strong> {{ selectedClient.country }}</p>
           <p><strong>État:</strong> {{ selectedClient.state }}</p>
+
+          <!-- Affichage des commandes -->
+          <h3>Commandes {{ selectedClient.firstName | uppercase }} : </h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Numéro de commande</th>
+                <th>Type Prestation</th>
+                <th>Désignation</th>
+                <th>Nombre de jours</th>
+                <th>Prix unitaire</th>
+                <!-- ... Ajoutez d'autres colonnes au besoin ... -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let order of selectedClient.orders; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ order.typePresta }}</td>
+                <td>{{ order.designation }}</td>
+                <td>{{ order.nbDays }}</td>
+                <td>{{ order.unitPrice }}</td>
+                <!-- ... Ajoutez d'autres colonnes au besoin ... -->
+              </tr>
+            </tbody>
+          </table>
+
+
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
         </div>
       </div>
