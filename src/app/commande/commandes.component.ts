@@ -3,7 +3,7 @@ import { Client } from '../interfaces/client.model';
 import { ClientService } from '../services/client.service';
 import axios from 'axios';
 import { Router } from '@angular/router';
-import { Commande } from '../interfaces/commande.model';
+import { Order } from '../interfaces/commande.model';
 
 @Component({
   selector: 'app-commande',
@@ -13,7 +13,7 @@ import { Commande } from '../interfaces/commande.model';
 
 export class CommandesComponent {
   baseUrl = 'http://localhost:8080/api/orders';
-  commandes: Commande[] = [];
+  commandes: Order[] = [];
   constructor(
     private clientService: ClientService,
     private router: Router,
@@ -22,7 +22,7 @@ export class CommandesComponent {
   ngOnInit(): void {
     this.clientService.fetchDataCommande().then(() => {
       this.commandes = this.clientService.getCommandes();
-      console.log("Liste commandes : ", this.commandes);
+      // console.log("Liste commandes : ", this.commandes);
     });
   }
 

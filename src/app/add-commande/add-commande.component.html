@@ -51,6 +51,17 @@
                         <option value="CANCELED">Annulé</option>
                     </select>
                 </div>
+                <div class="form-group mb-3">
+                    <label for="commandeClientIdInput">Client</label>
+                    <select id="commandeClientIdInput" class="form-control" formControlName="idClient">
+                        <option *ngFor="let client of clients" [value]="client.id">{{ client.companyName }} - {{ client.firstName }} {{ client.lastName }}</option>
+                    </select>
+                    <div class="text-danger"
+                        *ngIf="commandeForm.get('idClient')?.invalid && commandeForm.get('idClient')?.touched">
+                        Le client est requis.
+                    </div>
+                </div>
+
                 <div class="d-flex">
                     <button class="btn btn-success mx-auto" type="submit" [disabled]="commandeForm.invalid">
                         Enregistrer

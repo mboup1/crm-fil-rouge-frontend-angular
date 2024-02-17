@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Client } from '../interfaces/client.model';
 import axios from 'axios';
-import { Commande } from '../interfaces/commande.model';
+import { Order } from '../interfaces/commande.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
   clients: Client[] = [];
-  commandes: Commande[] = [];
+  commandes: Order[] = [];
 
   constructor() { }
 
@@ -66,7 +66,7 @@ export class ClientService {
     return this.clients.find(client => client.id === clientId);
   }
 
-  getCommandes(): Commande[] {
+  getCommandes(): Order[] {
     return this.commandes;
   }
 }

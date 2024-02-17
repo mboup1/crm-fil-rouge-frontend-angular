@@ -1,5 +1,6 @@
-export interface Commande {
+export interface Order {
   id: number;
+  clientId: number;  // Ajoutez cette propriété pour stocker l'ID du client associé
   typePresta: string;
   designation: string;
   nbDays: number;
@@ -8,12 +9,3 @@ export interface Commande {
   totalWithTaxe?: number;
   state: string; // "CANCELED" or "OPTION" or "CONFIRMED"
 }
-
-// state: OrderState;
-// }
-
-// export enum OrderState {
-//   CANCELED = 'CANCELED',
-//   OPTION = 'OPTION',
-//   CONFIRMED = 'CONFIRMED'
-// }
