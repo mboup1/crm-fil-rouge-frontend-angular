@@ -32,7 +32,9 @@
         <td>{{ client.country }}</td>
         <td>{{ client.state}}</td> -->
         <td>
-          <button class="btn btn-primary me-2" (click)="getClient(client.id)">infos...</button>
+          <button class="btn btn-primary me-2" (click)="getClient(client.id)" data-bs-toggle="modal"
+            data-bs-target="#detailsClientModal">infos...
+          </button>
 
 
           <button class="btn btn-primary me-2" type="button" [routerLink]="['/updateClient']"
@@ -44,21 +46,35 @@
       </tr>
     </tbody>
   </table>
+</div>
 
-  <div *ngIf="selectedClient" class="client-details">
-    <h2>Infos client : {{ selectedClient.lastName }} </h2>
-    <p><strong>Id:</strong> {{ selectedClient.id }}</p>
-    <p><strong>Nom de l'entreprise:</strong> {{ selectedClient.companyName }}</p>
-    <p><strong>Prénom:</strong> {{ selectedClient.firstName | uppercase }}</p>
-    <p><strong>Nom:</strong> {{ selectedClient.lastName }}</p>
-    <p><strong>Email:</strong> {{ selectedClient.email }}</p>
-    <p><strong>Téléphone:</strong> {{ selectedClient.phone }}</p>
-    <p><strong>Adresse:</strong> {{ selectedClient.address }}</p>
-    <p><strong>Code postal:</strong> {{ selectedClient.zipCode }}</p>
-    <p><strong>Ville:</strong> {{ selectedClient.city }}</p>
-    <p><strong>Pays:</strong> {{ selectedClient.country }}</p>
-    <p><strong>État:</strong> {{ selectedClient.state }}</p>
+<!-- Modal -->
+<div class="modal fade" id="detailsClientModal" tabindex="-1" aria-labelledby="detailsClientModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h1 class="modal-title fs-5" id="detailsClientModalLabel">Détails du client</h1> -->
+        <h2 *ngIf="selectedClient">Infos client : {{ selectedClient.firstName | uppercase }} {{ selectedClient.lastName
+          }}</h2>
 
-    <button class="btn btn-secondary" (click)="hideClientDetails()">Fermer</button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Affichez les détails du client ici -->
+        <div *ngIf="selectedClient">
+          <p><strong>Nom de l'entreprise:</strong> {{ selectedClient.companyName }}</p>
+          <p><strong>Prénom:</strong> {{ selectedClient.firstName | uppercase }}</p>
+          <p><strong>Nom:</strong> {{ selectedClient.lastName }}</p>
+          <p><strong>Email:</strong> {{ selectedClient.email }}</p>
+          <p><strong>Téléphone:</strong> {{ selectedClient.phone }}</p>
+          <p><strong>Adresse:</strong> {{ selectedClient.address }}</p>
+          <p><strong>Code postal:</strong> {{ selectedClient.zipCode }}</p>
+          <p><strong>Ville:</strong> {{ selectedClient.city }}</p>
+          <p><strong>Pays:</strong> {{ selectedClient.country }}</p>
+          <p><strong>État:</strong> {{ selectedClient.state }}</p>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

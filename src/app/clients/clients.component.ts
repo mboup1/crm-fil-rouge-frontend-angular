@@ -59,8 +59,4 @@ export class ClientsComponent {
         console.error('erreur:', error);
       });
   }
-
-  hideClientDetails() {
-    this.selectedClient = null;
-  }
 }
