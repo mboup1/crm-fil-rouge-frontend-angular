@@ -1,7 +1,7 @@
 <div class="bg-white shadow p-4 rounded">
   <h1 class="display-6 text-dark text-center">Liste des clients</h1>
   <hr class="bg-dark text-dark">
-  <table class="table">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">Id</th>
@@ -10,11 +10,11 @@
         <th scope="col">Nom</th>
         <th scope="col">Email</th>
         <th scope="col">Téléphone</th>
-        <th scope="col">Adresse</th>
+        <!-- <th scope="col">Adresse</th>
         <th scope="col">Code postal</th>
         <th scope="col">Ville</th>
         <th scope="col">Pays</th>
-        <th scope="col">État</th>
+        <th scope="col">État</th> -->
         <th>Actions</th>
       </tr>
     </thead>
@@ -26,12 +26,15 @@
         <td>{{ client.lastName }}</td>
         <td>{{ client.email }}</td>
         <td>{{ client.phone }}</td>
-        <td>{{ client.address }}</td>
+        <!-- <td>{{ client.address }}</td>
         <td>{{ client.zipCode }}</td>
         <td>{{ client.city }}</td>
         <td>{{ client.country }}</td>
-        <td>{{ client.state}}</td>
+        <td>{{ client.state}}</td> -->
         <td>
+          <button class="btn btn-primary me-2" (click)="getClient(client.id)">infos...</button>
+
+
           <button class="btn btn-primary me-2" type="button" [routerLink]="['/updateClient']"
             [queryParams]="{ index: i, id: client.id, companyName: client.companyName, firstName: client.firstName, lastName: client.lastName, email: client.email, phone: client.phone, address: client.address, zipCode: client.zipCode, city: client.city, country: client.country, state: client.state }">Modifier
           </button>
@@ -41,4 +44,21 @@
       </tr>
     </tbody>
   </table>
+
+  <div *ngIf="selectedClient" class="client-details">
+    <h2>Infos client : {{ selectedClient.lastName }} </h2>
+    <p><strong>Id:</strong> {{ selectedClient.id }}</p>
+    <p><strong>Nom de l'entreprise:</strong> {{ selectedClient.companyName }}</p>
+    <p><strong>Prénom:</strong> {{ selectedClient.firstName | uppercase }}</p>
+    <p><strong>Nom:</strong> {{ selectedClient.lastName }}</p>
+    <p><strong>Email:</strong> {{ selectedClient.email }}</p>
+    <p><strong>Téléphone:</strong> {{ selectedClient.phone }}</p>
+    <p><strong>Adresse:</strong> {{ selectedClient.address }}</p>
+    <p><strong>Code postal:</strong> {{ selectedClient.zipCode }}</p>
+    <p><strong>Ville:</strong> {{ selectedClient.city }}</p>
+    <p><strong>Pays:</strong> {{ selectedClient.country }}</p>
+    <p><strong>État:</strong> {{ selectedClient.state }}</p>
+
+    <button class="btn btn-secondary" (click)="hideClientDetails()">Fermer</button>
+  </div>
 </div>

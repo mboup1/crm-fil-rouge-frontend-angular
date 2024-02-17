@@ -29,7 +29,7 @@ export class ClientService {
         city: client.city,
         country: client.country,
         state: client.state,
-        orders: client.orders // Assuming orders is an array in the response
+        orders: client.orders
       }));
     } catch (error) {
       console.error('Erreur lors de la récupération des données JSON :', error);
@@ -60,6 +60,10 @@ export class ClientService {
 
   getClients(): Client[] {
     return this.clients;
+  }
+
+  getClientById(clientId: number): Client | undefined {
+    return this.clients.find(client => client.id === clientId);
   }
 
   getCommandes(): Commande[] {

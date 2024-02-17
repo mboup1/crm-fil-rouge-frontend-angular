@@ -4,6 +4,7 @@ import { ClientService } from '../services/client.service';
 import axios from 'axios';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
@@ -11,6 +12,11 @@ import { Router } from '@angular/router';
 export class ClientsComponent {
   baseUrl = 'http://localhost:8080/api/clients';
   clients: Client[] = [];
+
+  selectedClient: Client | null = null;
+
+
+
   constructor(
     private clientService: ClientService,
     private router: Router,
@@ -19,7 +25,10 @@ export class ClientsComponent {
   ngOnInit(): void {
     this.clientService.fetchData().then(() => {
       this.clients = this.clientService.getClients();
-      console.log("Liste clients : ", this.clients);
+
+      // Tri des clients par ordre décroissant selon l'ID
+      this.clients.sort((a, b) => (b.id < a.id) ? 1 : -1);
+      // console.log("Liste clients : ", this.clients);
     });
   }
 
@@ -35,5 +44,23 @@ export class ClientsComponent {
         .catch(error => {
           console.error("Erreur lors de la suppression de la client:", error);
         });
+  }
+
+  getClient(id: number) {
+    axios
+      .get(`${this.baseUrl}/${id}`)
+      .then((response) => {
+        this.selectedClient = response.data;
+        console.log('this.selectedClient :', this.selectedClient);
+        // console.log('recup client avec succès :', response.data);
+        this.router.navigate(['/clients']);
+      })
+      .catch((error) => {
+        console.error('erreur:', error);
+      });
+  }
+
+  hideClientDetails() {
+    this.selectedClient = null;
   }
 }
