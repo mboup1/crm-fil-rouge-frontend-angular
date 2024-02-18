@@ -7,11 +7,9 @@ import { LoginComponent } from './login/login.component';
 import { CommandesComponent } from './commande/commandes.component';
 import { AddCommandeComponent } from './add-commande/add-commande.component';
 import { UpdateCommandeComponent } from './update-commande/update-commande.component';
-import { DetailsClientComponent } from './details-client/details-client.component';
 
 const routes: Routes = [
   { path: 'clients', component: ClientsComponent },
-  { path: 'details-client', component: DetailsClientComponent },
   { path: 'commandes', component: CommandesComponent },
   { path: 'addcommande', component: AddCommandeComponent },
   { path: 'addclient', component: AddClientComponent },

@@ -5,13 +5,13 @@ import { Client } from '../interfaces/client.model';
 import { ClientService as ClientService } from '../services/client.service';
 import { Router } from '@angular/router';
 import axios from 'axios';
+import { API_BASE_URL } from '../config/config';
 
 @Component({
   selector: 'app-add-commande',
   templateUrl: './add-commande.component.html',
 })
 export class AddCommandeComponent implements OnInit {
-  baseUrl = 'http://localhost:8080/api/orders';
   commandeForm!: FormGroup;
   commandes: Order[] = [];
   clients: Client[] = []; // Ajoutez cette ligne pour récupérer la liste des clients
@@ -46,7 +46,7 @@ export class AddCommandeComponent implements OnInit {
 
   createCommande(commande: any) {
     // console.log("commande : ",commande)
-    axios.post(this.baseUrl, commande)
+    axios.post(`${API_BASE_URL}/orders`, commande)
       .then(response => {
         console.log("Commande créée avec succès:", response);
         this.router.navigate(['/commandes']);
@@ -55,5 +55,5 @@ export class AddCommandeComponent implements OnInit {
         console.error("La création a échoué:", error);
       });
   }
-  
+
 }

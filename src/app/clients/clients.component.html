@@ -89,8 +89,8 @@
             </thead>
             <tbody>
               <tr *ngFor="let order of selectedClient.orders; let i = index">
-                <td>{{ i + 1 }}</td>
                 <td>{{ order.typePresta }}</td>
+                <td>{{ order.id }}</td>
                 <td>{{ order.designation }}</td>
                 <td>{{ order.nbDays }}</td>
                 <td>{{ order.unitPrice }}</td>

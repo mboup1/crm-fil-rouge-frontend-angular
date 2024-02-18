@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Client } from '../interfaces/client.model';
 import { ClientService } from '../services/client.service';
 import axios from 'axios';
 import { Router } from '@angular/router';
 import { Order } from '../interfaces/commande.model';
+import { API_BASE_URL } from '../config/config';
 
 @Component({
   selector: 'app-commande',
@@ -12,7 +12,6 @@ import { Order } from '../interfaces/commande.model';
 
 
 export class CommandesComponent {
-  baseUrl = 'http://localhost:8080/api/orders';
   commandes: Order[] = [];
   constructor(
     private clientService: ClientService,
@@ -22,6 +21,7 @@ export class CommandesComponent {
   ngOnInit(): void {
     this.clientService.fetchDataCommande().then(() => {
       this.commandes = this.clientService.getCommandes();
+      this.commandes.sort((a, b) => (b.id < a.id) ? 1 : -1);
       // console.log("Liste commandes : ", this.commandes);
     });
   }
@@ -30,7 +30,7 @@ export class CommandesComponent {
     const conf = confirm(`Etes-vous sûr de vouloir supprimer la commande ${typePresta} - ${designation} ?`);
 
     if (conf) {
-      axios.delete(`${this.baseUrl}/${id}`)
+      axios.delete(`${API_BASE_URL}/orders`)
         .then(() => {
           this.commandes = this.commandes.filter(commande => commande.id !== id);
           console.log("Commande supprimée avec succès!");

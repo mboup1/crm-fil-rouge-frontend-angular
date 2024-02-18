@@ -4,13 +4,13 @@ import { Client } from '../interfaces/client.model';
 import { ClientService } from '../services/client.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import axios from 'axios';
+import { API_BASE_URL } from '../config/config';
 
 @Component({
   selector: 'app-update-client',
   templateUrl: './update-client.component.html',
 })
 export class UpdateClientComponent {
-  baseUrl = 'http://localhost:8080/api/clients';
   clientForm!: FormGroup;
   clients: Client[] = [];
 
@@ -59,7 +59,7 @@ export class UpdateClientComponent {
   }
 
   updateClient(id: number, client: any) {
-    axios.put(`${this.baseUrl}/${id}`, client)
+    axios.put(`${API_BASE_URL}/clients/${id}`, client)
       .then(response => {
         console.log("Update successful:", response);
         this.router.navigate(['/clients']);

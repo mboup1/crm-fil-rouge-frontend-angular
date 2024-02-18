@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Client } from '../interfaces/client.model';
 import { ClientService } from '../services/client.service';
+
 import axios from 'axios';
 import { Router } from '@angular/router';
+import { API_BASE_URL } from '../config/config';
 
 
 @Component({
@@ -10,7 +12,6 @@ import { Router } from '@angular/router';
   templateUrl: './clients.component.html',
 })
 export class ClientsComponent {
-  baseUrl = 'http://localhost:8080/api/clients';
   clients: Client[] = [];
 
   selectedClient: Client | null = null;
@@ -36,7 +37,7 @@ export class ClientsComponent {
     let conf = confirm(`Etes-vous sûr de vouloir supprimer ${name}  ${firstName} ?`);
 
     if (conf)
-      axios.delete(`${this.baseUrl}/${id}`)
+      axios.delete(`${API_BASE_URL}/clients/${id}`)
         .then(() => {
           this.clients = this.clients.filter(client => client.id !== id);
           console.log("client supprimé avec succès!");
@@ -48,7 +49,7 @@ export class ClientsComponent {
 
   getClient(id: number) {
     axios
-      .get(`${this.baseUrl}/${id}`)
+      .get(`${API_BASE_URL}/clients/${id}`)
       .then((response) => {
         this.selectedClient = response.data;
         console.log('this.selectedClient :', this.selectedClient);

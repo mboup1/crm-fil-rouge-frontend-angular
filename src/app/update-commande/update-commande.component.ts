@@ -3,13 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientService } from '../services/client.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import axios from 'axios';
+import { API_BASE_URL } from '../config/config';
 
 @Component({
   selector: 'app-update-commande',
   templateUrl: './update-commande.component.html',
 })
 export class UpdateCommandeComponent implements OnInit {
-  baseUrl = 'http://localhost:8080/api/orders';
   commandeForm!: FormGroup;
 
   constructor(
@@ -48,7 +48,7 @@ export class UpdateCommandeComponent implements OnInit {
 
   updateCommande(id: number, commande: any) {
     axios
-      .put(`${this.baseUrl}/${id}`, commande)
+      .put(`${API_BASE_URL}/orders/${id}`, commande)
       .then((response) => {
         console.log('Update successful:', response);
         this.router.navigate(['/commandes']);

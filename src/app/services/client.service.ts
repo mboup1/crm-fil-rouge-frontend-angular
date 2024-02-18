@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Client } from '../interfaces/client.model';
 import axios from 'axios';
 import { Order } from '../interfaces/commande.model';
+import { API_BASE_URL } from '../config/config';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,10 @@ export class ClientService {
   constructor() { }
 
   async fetchData(): Promise<void> {
-    const jsonUrl = 'http://localhost:8080/api/clients';
+
 
     try {
-      const response = await axios.get(jsonUrl);
+      const response = await axios.get(`${API_BASE_URL}/clients`);
       this.clients = response.data.map((client: any) => ({
         id: client.id,
         companyName: client.companyName,
@@ -37,10 +38,10 @@ export class ClientService {
   }
 
   async fetchDataCommande(): Promise<void> {
-    const jsonUrl = 'http://localhost:8080/api/orders';
 
+    
     try {
-      const response = await axios.get(jsonUrl);
+      const response = await axios.get(`${API_BASE_URL}/orders`);
       this.commandes = response.data.map((commande: any) => ({
         id: commande.id,
         typePresta: commande.typePresta,

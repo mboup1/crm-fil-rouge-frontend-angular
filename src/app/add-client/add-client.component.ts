@@ -4,13 +4,13 @@ import { Client } from '../interfaces/client.model';
 import { ClientService as ClientService } from '../services/client.service';
 import { Router } from '@angular/router';
 import axios from 'axios';
+import { API_BASE_URL } from '../config/config';
 
 @Component({
   selector: 'app-add-client',
   templateUrl: './add-client.component.html',
 })
 export class AddClientComponent {
-  baseUrl = 'http://localhost:8080/api/clients';
   clientForm!: FormGroup;
   clients: Client[] = [];
 
@@ -43,7 +43,7 @@ export class AddClientComponent {
   }
 
   createClient(client: any) {
-    axios.post(this.baseUrl, client)
+    axios.post(`${API_BASE_URL}/clients`, client)
       .then(response => {
         console.log("client cré avec succès:", response);
         this.router.navigate(['/clients']);

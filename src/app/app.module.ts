@@ -14,7 +14,6 @@ import { LoginComponent } from './login/login.component';
 import { CommandesComponent } from './commande/commandes.component';
 import { AddCommandeComponent } from './add-commande/add-commande.component';
 import { UpdateCommandeComponent } from './update-commande/update-commande.component';
-import { DetailsClientComponent } from './details-client/details-client.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { DetailsClientComponent } from './details-client/details-client.componen
     CommandesComponent,
     AddCommandeComponent,
     UpdateCommandeComponent,
-    DetailsClientComponent,
   ],
   imports: [
     BrowserModule,
