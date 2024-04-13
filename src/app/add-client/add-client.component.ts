@@ -45,7 +45,7 @@ export class AddClientComponent {
   createClient(client: any) {
     axios.post(`${API_BASE_URL}/clients`, client)
       .then(response => {
-        console.log("client cré avec succès:", response);
+        console.log("client créé avec succès:", response);
         this.router.navigate(['/clients']);
       })
       .catch(error => {

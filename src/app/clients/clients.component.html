@@ -75,7 +75,7 @@
           <p><strong>État:</strong> {{ selectedClient.state }}</p>
 
           <!-- Affichage des commandes -->
-          <h3>Commandes {{ selectedClient.firstName | uppercase }} : </h3>
+          <h3>Commandes de {{ selectedClient.firstName | uppercase }} : </h3>
           <table class="table">
             <thead>
               <tr>
@@ -89,8 +89,8 @@
             </thead>
             <tbody>
               <tr *ngFor="let order of selectedClient.orders; let i = index">
-                <td>{{ order.typePresta }}</td>
                 <td>{{ order.id }}</td>
+                <td>{{ order.typePresta }}</td>
                 <td>{{ order.designation }}</td>
                 <td>{{ order.nbDays }}</td>
                 <td>{{ order.unitPrice }}</td>

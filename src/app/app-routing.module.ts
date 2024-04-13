@@ -4,7 +4,7 @@ import { ClientsComponent } from './clients/clients.component';
 import { AddClientComponent } from './add-client/add-client.component';
 import { UpdateClientComponent } from './update-client/update-client.component';
 import { LoginComponent } from './login/login.component';
-import { CommandesComponent } from './commande/commandes.component';
+import { CommandesComponent } from './commandes/commandes.component';
 import { AddCommandeComponent } from './add-commande/add-commande.component';
 import { UpdateCommandeComponent } from './update-commande/update-commande.component';
 

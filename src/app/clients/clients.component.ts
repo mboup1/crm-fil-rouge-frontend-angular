@@ -52,7 +52,9 @@ export class ClientsComponent {
       .get(`${API_BASE_URL}/clients/${id}`)
       .then((response) => {
         this.selectedClient = response.data;
-        console.log('this.selectedClient :', this.selectedClient);
+        // console.log('this.selectedClient :', this.selectedClient);
+        this.clients.sort((a, b) => (b.id < a.id) ? 1 : -1);
+
         // console.log('recup client avec succès :', response.data);
         this.router.navigate(['/clients']);
       })

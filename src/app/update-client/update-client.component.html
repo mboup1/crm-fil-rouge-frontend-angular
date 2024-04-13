@@ -1,14 +1,16 @@
 <div class="row m-5">
   <div class="col-12 col-md-10 col-lg-8 col-xl-6 mx-auto">
     <div class="bg-white shadow rounded p-4">
-      <h1 class="display-6 text-dark text-center">Modifier infos client - {{ clientForm.value.firstName }} {{ clientForm.value.name }}</h1>
+      <h1 class="display-6 text-dark text-center">Modifier infos client - {{ clientForm.value.firstName }} {{
+        clientForm.value.name }}</h1>
       <hr class="bg-dark mb-5" />
       <form [formGroup]="clientForm" (ngSubmit)="updateClient(clientForm.value.id, clientForm.value)">
         <input type="text" formControlName="id" hidden />
 
         <div class="form-group mb-3">
           <label for="clientCompanyNameInput">Nom de l'entreprise</label>
-          <input type="text" id="clientCompanyNameInput" class="form-control" formControlName="companyName" [class.is-invalid]="clientForm.get('companyName')?.invalid && clientForm.get('companyName')?.touched" />
+          <input type="text" id="clientCompanyNameInput" class="form-control" formControlName="companyName"
+            [class.is-invalid]="clientForm.get('companyName')?.invalid && clientForm.get('companyName')?.touched" />
           <div class="invalid-feedback">
             Le nom de l'entreprise est requis.
           </div>
@@ -16,7 +18,8 @@
 
         <div class="form-group mb-3">
           <label for="clientFirstNameInput">Prénom</label>
-          <input type="text" id="clientFirstNameInput" class="form-control" formControlName="firstName" [class.is-invalid]="clientForm.get('firstName')?.invalid && clientForm.get('firstName')?.touched" />
+          <input type="text" id="clientFirstNameInput" class="form-control" formControlName="firstName"
+            [class.is-invalid]="clientForm.get('firstName')?.invalid && clientForm.get('firstName')?.touched" />
           <div class="invalid-feedback">
             Le prénom est requis.
           </div>
@@ -24,7 +27,8 @@
 
         <div class="form-group mb-3">
           <label for="clientLastNameInput">Nom</label>
-          <input type="text" id="clientLastNameInput" class="form-control" formControlName="lastName" [class.is-invalid]="clientForm.get('lastName')?.invalid && clientForm.get('lastName')?.touched" />
+          <input type="text" id="clientLastNameInput" class="form-control" formControlName="lastName"
+            [class.is-invalid]="clientForm.get('lastName')?.invalid && clientForm.get('lastName')?.touched" />
           <div class="invalid-feedback">
             Le nom est requis.
           </div>
@@ -32,7 +36,8 @@
 
         <div class="form-group mb-3">
           <label for="clientEmailInput">Email</label>
-          <input type="text" id="clientEmailInput" class="form-control" formControlName="email" [class.is-invalid]="clientForm.get('email')?.invalid && clientForm.get('email')?.touched" />
+          <input type="text" id="clientEmailInput" class="form-control" formControlName="email"
+            [class.is-invalid]="clientForm.get('email')?.invalid && clientForm.get('email')?.touched" />
           <div class="invalid-feedback">
             L'email est requis et doit être au bon format (exemple@exemple.com).
           </div>
@@ -40,7 +45,8 @@
 
         <div class="form-group mb-3">
           <label for="clientPhoneInput">Téléphone</label>
-          <input type="text" id="clientPhoneInput" class="form-control" formControlName="phone" [class.is-invalid]="clientForm.get('phone')?.invalid && clientForm.get('phone')?.touched" />
+          <input type="text" id="clientPhoneInput" class="form-control" formControlName="phone"
+            [class.is-invalid]="clientForm.get('phone')?.invalid && clientForm.get('phone')?.touched" />
           <div class="invalid-feedback">
             Le numéro de téléphone est requis.
           </div>
@@ -48,7 +54,8 @@
 
         <div class="form-group mb-3">
           <label for="clientAddressInput">Adresse</label>
-          <input type="text" id="clientAddressInput" class="form-control" formControlName="address" [class.is-invalid]="clientForm.get('address')?.invalid && clientForm.get('address')?.touched" />
+          <input type="text" id="clientAddressInput" class="form-control" formControlName="address"
+            [class.is-invalid]="clientForm.get('address')?.invalid && clientForm.get('address')?.touched" />
           <div class="invalid-feedback">
             L'adresse est requise.
           </div>
@@ -56,7 +63,8 @@
 
         <div class="form-group mb-3">
           <label for="clientZipCodeInput">Code postal</label>
-          <input type="text" id="clientZipCodeInput" class="form-control" formControlName="zipCode" [class.is-invalid]="clientForm.get('zipCode')?.invalid && clientForm.get('zipCode')?.touched" />
+          <input type="text" id="clientZipCodeInput" class="form-control" formControlName="zipCode"
+            [class.is-invalid]="clientForm.get('zipCode')?.invalid && clientForm.get('zipCode')?.touched" />
           <div class="invalid-feedback">
             Le code postal est requis.
           </div>
@@ -64,7 +72,8 @@
 
         <div class="form-group mb-3">
           <label for="clientCityInput">Ville</label>
-          <input type="text" id="clientCityInput" class="form-control" formControlName="city" [class.is-invalid]="clientForm.get('city')?.invalid && clientForm.get('city')?.touched" />
+          <input type="text" id="clientCityInput" class="form-control" formControlName="city"
+            [class.is-invalid]="clientForm.get('city')?.invalid && clientForm.get('city')?.touched" />
           <div class="invalid-feedback">
             La ville est requise.
           </div>
@@ -72,7 +81,8 @@
 
         <div class="form-group mb-3">
           <label for="clientCountryInput">Pays</label>
-          <input type="text" id="clientCountryInput" class="form-control" formControlName="country" [class.is-invalid]="clientForm.get('country')?.invalid && clientForm.get('country')?.touched" />
+          <input type="text" id="clientCountryInput" class="form-control" formControlName="country"
+            [class.is-invalid]="clientForm.get('country')?.invalid && clientForm.get('country')?.touched" />
           <div class="invalid-feedback">
             Le pays est requis.
           </div>
