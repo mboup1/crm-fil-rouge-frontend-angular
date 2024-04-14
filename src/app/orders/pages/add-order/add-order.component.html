@@ -3,67 +3,67 @@
         <div class="bg-white shadow rounded p-4">
             <h1 class="display-6 text-dark text-center">Ajouter une commande</h1>
             <hr class="bg-dark mb-5" />
-            <form [formGroup]="commandeForm" (ngSubmit)="createCommande(commandeForm.value)">
+            <form [formGroup]="orderForm" (ngSubmit)="addOrder(orderForm.value)">
                 <!-- <input type="text" formControlName="id" hidden /> -->
 
                 <div class="form-group mb-3">
-                    <label for="commandeTypePrestaInput">Type de prestation</label>
-                    <input type="text" id="commandeTypePrestaInput" class="form-control" formControlName="typePresta" />
+                    <label for="orderTypePrestaInput">Type de prestation</label>
+                    <input type="text" id="orderTypePrestaInput" class="form-control" formControlName="typePresta" />
                     <div class="text-danger"
-                        *ngIf="commandeForm.get('typePresta')?.invalid && commandeForm.get('typePresta')?.touched ">
+                        *ngIf="orderForm.get('typePresta')?.invalid && orderForm.get('typePresta')?.touched ">
                         Le type de prestation est requis.
                     </div>
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="commandeDesignationInput">Désignation</label>
-                    <input type="text" id="commandeDesignationInput" class="form-control"
+                    <label for="orderDesignationInput">Désignation</label>
+                    <input type="text" id="orderDesignationInput" class="form-control"
                         formControlName="designation" />
                     <div class="text-danger"
-                        *ngIf="commandeForm.get('designation')?.invalid && commandeForm.get('designation')?.touched ">
+                        *ngIf="orderForm.get('designation')?.invalid && orderForm.get('designation')?.touched ">
                         La désignation est requise.
                     </div>
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="commandeNbDaysInput">Nombre de jours</label>
-                    <input type="number" id="commandeNbDaysInput" class="form-control" formControlName="nbDays" />
+                    <label for="orderNbDaysInput">Nombre de jours</label>
+                    <input type="number" id="orderNbDaysInput" class="form-control" formControlName="nbDays" />
                     <div class="text-danger"
-                        *ngIf="commandeForm.get('nbDays')?.invalid && commandeForm.get('nbDays')?.touched ">
+                        *ngIf="orderForm.get('nbDays')?.invalid && orderForm.get('nbDays')?.touched ">
                         Le nombre de jours est requis.
                     </div>
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="commandeUnitPriceInput">Prix unitaire</label>
-                    <input type="number" id="commandeUnitPriceInput" class="form-control" formControlName="unitPrice" />
+                    <label for="orderUnitPriceInput">Prix unitaire</label>
+                    <input type="number" id="orderUnitPriceInput" class="form-control" formControlName="unitPrice" />
                     <div class="text-danger"
-                        *ngIf="commandeForm.get('unitPrice')?.invalid && commandeForm.get('unitPrice')?.touched ">
+                        *ngIf="orderForm.get('unitPrice')?.invalid && orderForm.get('unitPrice')?.touched ">
                         Le prix unitaire est requis.
                     </div>
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="commandeStateInput">État</label>
-                    <select id="commandeStateInput" class="form-control" formControlName="state">
+                    <label for="orderStateInput">État</label>
+                    <select id="orderStateInput" class="form-control" formControlName="state">
                         <option value="OPTION">Option</option>
                         <option value="CONFIRMED">Confirmé</option>
                         <option value="CANCELED">Annulé</option>
                     </select>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="commandeClientIdInput">Client</label>
-                    <select id="commandeClientIdInput" class="form-control" formControlName="idClient">
+                    <label for="orderClientIdInput">Client</label>
+                    <select id="orderClientIdInput" class="form-control" formControlName="idClient">
                         <option *ngFor="let client of clients" [value]="client.id">{{ client.companyName }} - {{ client.firstName }} {{ client.lastName }}</option>
                     </select>
                     <div class="text-danger"
-                        *ngIf="commandeForm.get('idClient')?.invalid && commandeForm.get('idClient')?.touched">
+                        *ngIf="orderForm.get('idClient')?.invalid && orderForm.get('idClient')?.touched">
                         Le client est requis.
                     </div>
                 </div>
 
                 <div class="d-flex">
-                    <button class="btn btn-success mx-auto" type="submit" [disabled]="commandeForm.invalid">
+                    <button class="btn btn-success mx-auto" type="submit" [disabled]="orderForm.invalid">
                         Enregistrer
                     </button>
                 </div>

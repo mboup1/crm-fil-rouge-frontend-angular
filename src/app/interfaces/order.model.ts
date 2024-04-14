@@ -1,6 +1,6 @@
 export interface Order {
   id: number;
-  clientId: number;  // Ajoutez cette propriété pour stocker l'ID du client associé
+  clientId: number; 
   typePresta: string;
   designation: string;
   nbDays: number;

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Client } from '../interfaces/client.model';
-import { ClientService as ClientService } from '../services/client.service';
+import { Client } from '../../../interfaces/client.model';
+import { ClientService as ClientService } from '../../service/client.service';
 import { Router } from '@angular/router';
 import axios from 'axios';
-import { API_BASE_URL } from '../config/config';
+import { API_BASE_URL } from '../../../config/config';
 
 @Component({
   selector: 'app-add-client',

@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ClientsComponent } from './clients.component';
-import { RouterModule } from '@angular/router';
-import { UpdateClientComponent } from '../update-client/update-client.component';
-import { AddClientComponent } from '../add-client/add-client.component';
+import { ClientsComponent } from './pages/list-clients/clients.component';
+import { RouterLink, RouterModule } from '@angular/router';
+import { UpdateClientComponent } from './pages/edit-client/update-client.component';
+import { AddClientComponent } from './pages/add-client/add-client.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ClientsRoutingModule } from './clients-routing.module';
 
 
 
@@ -16,11 +17,16 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink,
+    ClientsRoutingModule,
 
   ],
-  exports: [ClientsComponent]
+  exports: [
+    ClientsComponent,
+    AddClientComponent,
+    UpdateClientComponent,
+  ]
 
 })
 export class ClientsModule { }

@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Client } from '../interfaces/client.model';
+import { Client } from '../../interfaces/client.model';
 import axios from 'axios';
-import { Order } from '../interfaces/commande.model';
-import { API_BASE_URL } from '../config/config';
+import { Order } from '../../interfaces/order.model';
+import { API_BASE_URL } from '../../config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
   clients: Client[] = [];
-  commandes: Order[] = [];
+  orders: Order[] = [];
 
   constructor() { }
 
-  async fetchData(): Promise<void> {
+  async fetchDataClients(): Promise<void> {
 
 
     try {
@@ -37,20 +37,20 @@ export class ClientService {
     }
   }
 
-  async fetchDataCommande(): Promise<void> {
+  async fetchDataOrders(): Promise<void> {
 
-    
+
     try {
       const response = await axios.get(`${API_BASE_URL}/orders`);
-      this.commandes = response.data.map((commande: any) => ({
-        id: commande.id,
-        typePresta: commande.typePresta,
-        designation: commande.designation,
-        nbDays: commande.nbDays,
-        unitPrice: commande.unitPrice,
-        totalExcludeTaxe: commande.totalExcludeTaxe,
-        totalWithTaxe: commande.totalWithTaxe,
-        state: commande.state,
+      this.orders = response.data.map((order: any) => ({
+        id: order.id,
+        typePresta: order.typePresta,
+        designation: order.designation,
+        nbDays: order.nbDays,
+        unitPrice: order.unitPrice,
+        totalExcludeTaxe: order.totalExcludeTaxe,
+        totalWithTaxe: order.totalWithTaxe,
+        state: order.state,
       }));
     } catch (error) {
       console.error('Erreur lors de la récupération des données JSON :', error);
@@ -67,7 +67,7 @@ export class ClientService {
     return this.clients.find(client => client.id === clientId);
   }
 
-  getCommandes(): Order[] {
-    return this.commandes;
+  getOrders(): Order[] {
+    return this.orders;
   }
 }

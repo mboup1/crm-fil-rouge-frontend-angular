@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Client } from '../interfaces/client.model';
-import { ClientService } from '../services/client.service';
+import { Client } from '../../../interfaces/client.model';
+import { ClientService } from '../../service/client.service';
 
 import axios from 'axios';
 import { Router } from '@angular/router';
-import { API_BASE_URL } from '../config/config';
+import { API_BASE_URL } from '../../../config/config';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class ClientsComponent {
   ) { }
 
   ngOnInit(): void {
-    this.clientService.fetchData().then(() => {
+    this.clientService.fetchDataClients().then(() => {
       this.clients = this.clientService.getClients();
 
       // Tri des clients par ordre décroissant selon l'ID

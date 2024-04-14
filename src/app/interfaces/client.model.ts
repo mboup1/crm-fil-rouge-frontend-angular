@@ -1,4 +1,4 @@
-import { Order } from './commande.model';
+import { Order } from './order.model';
 
 export interface Client {
   id: number;

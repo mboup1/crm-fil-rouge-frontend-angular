@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
-import { ClientsComponent } from '../clients/clients.component';
+import { ClientsComponent } from '../clients/pages/list-clients/clients.component';
 import { RouterModule } from '@angular/router';
 
 

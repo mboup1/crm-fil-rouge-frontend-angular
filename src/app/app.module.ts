@@ -8,9 +8,9 @@ import { UppercasePipe } from './pipes/uppercase.pipe';
 import { UppercaseInputDirective } from './directives/uppercase-input.directive';
 import { CoreModule } from './core/core.module';
 import { ClientsModule } from './clients/clients.module';
-import { CommandesModule } from './commandes/commandes.module';
 import { HeaderModule } from './header/header.module';
 import { LoginModule } from './login/login.module';
+import { ordersModule } from './orders/orders.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { LoginModule } from './login/login.module';
     AppRoutingModule,
     FormsModule,
     ClientsModule,
-    CommandesModule,
+    ordersModule,
     HeaderModule,
     LoginModule
   ],

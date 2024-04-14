@@ -1,0 +1,63 @@
+<div class="row m-5">
+    <div class="col-12 col-md-10 col-lg-8 col-xl-6 mx-auto">
+        <div class="bg-white shadow rounded p-4">
+            <h1 class="display-6 text-dark text-center">Modifier infos commande - {{ orderForm.value.typePresta }} {{
+                orderForm.value.designation }}</h1>
+            <hr class="bg-dark mb-5" />
+            <form [formGroup]="orderForm" (ngSubmit)="updateOrder(orderForm.value.id, orderForm.value)">
+                <input type="text" formControlName="id" hidden />
+
+                <div class="form-group mb-3">
+                    <label for="orderTypePrestaInput">Type de prestation</label>
+                    <input type="text" id="orderTypePrestaInput" class="form-control" formControlName="typePresta"
+                        [class.is-invalid]="orderForm.get('typePresta')?.invalid && orderForm.get('typePresta')?.touched" />
+                    <div class="invalid-feedback">
+                        Le type de prestation est requis.
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="orderDesignationInput">Désignation</label>
+                    <input type="text" id="orderDesignationInput" class="form-control" formControlName="designation"
+                        [class.is-invalid]="orderForm.get('designation')?.invalid && orderForm.get('designation')?.touched" />
+                    <div class="invalid-feedback">
+                        La désignation est requise.
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="orderNbDaysInput">Nombre de jours</label>
+                    <input type="number" id="orderNbDaysInput" class="form-control" formControlName="nbDays"
+                        [class.is-invalid]="orderForm.get('nbDays')?.invalid && orderForm.get('nbDays')?.touched" />
+                    <div class="invalid-feedback">
+                        Le nombre de jours est requis.
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="orderUnitPriceInput">Prix unitaire</label>
+                    <input type="number" id="orderUnitPriceInput" class="form-control" formControlName="unitPrice"
+                        [class.is-invalid]="orderForm.get('unitPrice')?.invalid && orderForm.get('unitPrice')?.touched" />
+                    <div class="invalid-feedback">
+                        Le prix unitaire est requis.
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="orderStateInput">État</label>
+                    <select id="orderStateInput" class="form-control" formControlName="state">
+                        <option value="CANCELED">Annulée</option>
+                        <option value="OPTION">En option</option>
+                        <option value="CONFIRMED">Confirmée</option>
+                    </select>
+                </div>
+
+                <div class="d-flex">
+                    <button class="btn btn-success mx-auto" type="submit" [disabled]="orderForm.invalid">
+                        Enregistrer
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

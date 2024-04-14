@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ClientService } from '../services/client.service';
+import { ClientService } from '../../../clients/service/client.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import axios from 'axios';
-import { API_BASE_URL } from '../config/config';
+import { API_BASE_URL } from '../../../config/config';
 
 @Component({
-  selector: 'app-update-commande',
-  templateUrl: './update-commande.component.html',
+  selector: 'app-update-order',
+  templateUrl: './update-order.component.html',
 })
-export class UpdateCommandeComponent implements OnInit {
-  commandeForm!: FormGroup;
+export class UpdateOrderComponent implements OnInit {
+  orderForm!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -20,9 +20,9 @@ export class UpdateCommandeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.initCommandeForm();
+    this.initOrderForm();
     this.route.queryParams.subscribe((params) => {
-      this.commandeForm.patchValue({
+      this.orderForm.patchValue({
         index: params['index'],
         id: params['id'],
         typePresta: params['typePresta'],
@@ -34,8 +34,8 @@ export class UpdateCommandeComponent implements OnInit {
     });
   }
 
-  initCommandeForm(): void {
-    this.commandeForm = this.formBuilder.group({
+  initOrderForm(): void {
+    this.orderForm = this.formBuilder.group({
       index: [0],
       id: 1,
       typePresta: ['', Validators.required],
@@ -46,12 +46,12 @@ export class UpdateCommandeComponent implements OnInit {
     });
   }
 
-  updateCommande(id: number, commande: any) {
+  updateOrder(id: number, order: any) {
     axios
-      .put(`${API_BASE_URL}/orders/${id}`, commande)
+      .put(`${API_BASE_URL}/orders/${id}`, order)
       .then((response) => {
         console.log('Update successful:', response);
-        this.router.navigate(['/commandes']);
+        this.router.navigate(['/orders']);
       })
       .catch((error) => {
         console.error('Update failed:', error);
