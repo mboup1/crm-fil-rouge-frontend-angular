@@ -24,9 +24,12 @@
           <td>{{ order.unitPrice }}</td>
           <td>{{ order.totalExcludeTaxe }}</td>
           <td>{{ order.totalWithTaxe }}</td>
-          <td>{{ order.state }}</td>
           <td>
-            <button class="btn btn-primary me-2" type="button" [routerLink]="['/update-order']"
+              <span *ngIf="order.state === 'CANCELED'">Annulée</span>
+              <span *ngIf="order.state === 'OPTION'">En option</span>
+              <span *ngIf="order.state === 'CONFIRMED'">Confirmée</span>
+          <td>
+            <button class="btn btn-primary me-2" type="button" [routerLink]="['/orders/update-order']"
               [queryParams]="{ index: i, id: order.id, typePresta: order.typePresta, designation: order.designation, nbDays: order.nbDays, unitPrice: order.unitPrice, totalExcludeTaxe: order.totalExcludeTaxe, totalWithTaxe: order.totalWithTaxe, state: order.state }">Modifier
             </button>
             <button class="btn btn-danger" type="button"
